@@ -1,3 +1,4 @@
+import 'package:cookbook/data/remote/datasource/ingredient_remote_source.dart';
 import 'package:cookbook/data/remote/datasource/recipe_remote_source.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,5 +11,8 @@ final remoteSourceProvider = [
   ),
   RepositoryProvider<RecipeRemoteSource>(
     create: (context) => RecipeRemoteSource(context.read<NetworkManager>()),
+  ),
+  RepositoryProvider<IngredientRemoteSource>(
+    create: (context) => IngredientRemoteSource(context.read<NetworkManager>()),
   )
 ];
