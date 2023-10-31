@@ -1,3 +1,4 @@
+import 'package:cookbook/domain/entity/food_entity.dart';
 import 'package:cookbook/presentation/detail/state/detail_bloc.dart';
 import 'package:cookbook/presentation/detail/state/detail_event.dart';
 import 'package:cookbook/presentation/detail/state/detail_state.dart';
@@ -5,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailScreen extends StatefulWidget {
-  const DetailScreen({required this.recipeId, super.key});
+  const DetailScreen({required this.foodItem, super.key});
 
-  final int recipeId;
+  final FoodEntity foodItem;
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -19,7 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();
-    detailBloc.add(RecipeLoadStarted(recipeId: widget.recipeId));
+    detailBloc.add(RecipeLoadStarted(recipeId: widget.foodItem.recipeId));
   }
 
   @override

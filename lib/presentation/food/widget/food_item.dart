@@ -1,4 +1,3 @@
-import 'package:cookbook/core/navigation/argument.dart';
 import 'package:cookbook/core/navigation/navigator.dart';
 import 'package:cookbook/domain/entity/food_entity.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +14,10 @@ class FoodItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppNavigator.push(Routes.detail,
-            arguments: DetailScreenArgument(recipeId: foodItem.recipeId));
+        AppNavigator.push(
+          Routes.detail,
+          arguments: foodItem,
+        );
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
