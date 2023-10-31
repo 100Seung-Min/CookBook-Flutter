@@ -32,13 +32,16 @@ class _DetailScreenState extends State<DetailScreen> {
         margin: EdgeInsets.only(top: 50),
         padding: EdgeInsets.symmetric(horizontal: 14),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(foodItem.recipeName,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  decoration: TextDecoration.none,
-                )),
+            Center(
+              child: Text(foodItem.recipeName,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    decoration: TextDecoration.none,
+                  )),
+            ),
             SizedBox(
               height: 10,
             ),
@@ -85,33 +88,54 @@ class _DetailScreenState extends State<DetailScreen> {
             SizedBox(
               height: 16,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[800],
-                borderRadius: BorderRadius.circular(20),
-              ),
-              width: MediaQuery.of(context).size.width - 20,
-              height: MediaQuery.of(context).size.height - 500,
-              child: PageView.builder(
-                  itemCount: recipeList.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                      child: Center(
-                        child: Text(
-                          "${index + 1}. ${recipeList[index].description}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                            decoration: TextDecoration.none,
+            Text("재료",
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white,
+                  decoration: TextDecoration.none,
+                  fontSize: 14,
+                )),
+            SizedBox(
+              height: 8,
+            ),
+            Text(state.ingredient,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white,
+                  decoration: TextDecoration.none,
+                  fontSize: 14,
+                )),
+            SizedBox(
+              height: 16,
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[800],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: PageView.builder(
+                    itemCount: recipeList.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                        child: Center(
+                          child: Text(
+                            "${index + 1}. ${recipeList[index].description}",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                              decoration: TextDecoration.none,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
+              ),
             ),
+            Expanded(child: Container())
           ],
         ),
       );
