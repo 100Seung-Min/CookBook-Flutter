@@ -5,7 +5,7 @@ part 'ingredient_response.g.dart';
 
 @JsonSerializable()
 class IngredientResponse {
-  IngredientResponse(this.ingredient, this.capacity);
+  IngredientResponse(this.ingredient, this.capacity, this.type);
 
   factory IngredientResponse.fromJson(Map<String, dynamic> json) =>
       _$IngredientResponseFromJson(json);
@@ -16,9 +16,14 @@ class IngredientResponse {
   final String ingredient;
   @JsonKey(name: 'IRDNT_CPCTY')
   final String capacity;
+  @JsonKey(name: 'IRDNT_TY_NM')
+  final String type;
 }
 
 extension IngredientResponseToEntityX on IngredientResponse {
-  IngredientEntity toEntity() =>
-      IngredientEntity(ingredient: ingredient, capacity: capacity);
+  IngredientEntity toEntity() => IngredientEntity(
+        ingredient: ingredient,
+        capacity: capacity,
+        type: type,
+      );
 }
