@@ -105,6 +105,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: ingredientList.length,
                   itemBuilder: (context, index) {
                     return Column(
@@ -153,16 +154,30 @@ class _DetailScreenState extends State<DetailScreen> {
                       return Container(
                         padding:
                             EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                        child: Center(
-                          child: Text(
-                            "${index + 1}. ${recipeList[index].description}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              decoration: TextDecoration.none,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${index + 1}. ${recipeList[index].description}",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
-                          ),
+                            if (recipeList[index].tip.isNotEmpty)
+                              Text(
+                                "Tip. ${recipeList[index].tip}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                          ],
                         ),
                       );
                     }),
