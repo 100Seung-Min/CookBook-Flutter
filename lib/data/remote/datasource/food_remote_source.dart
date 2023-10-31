@@ -1,6 +1,6 @@
-import 'package:cookbook/core/constant.dart';
+import 'package:cookbook/core/util/constant.dart';
 import 'package:cookbook/data/remote/response/food/food_base_response.dart';
-import 'package:cookbook/data/remote/util/EndPoint.dart';
+import 'package:cookbook/data/remote/util/end_point.dart';
 import 'package:cookbook/data/remote/util/network.dart';
 import '../response/food/food_response.dart';
 
