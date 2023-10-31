@@ -27,19 +27,94 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<DetailBloc, DetailState>(builder: (context, state) {
       final recipeList = state.recipeList;
-      return ListView.builder(
-          itemCount: recipeList.length,
-          itemBuilder: (context, index) {
-            return Text(
-              recipeList[index].description,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.normal,
-                decoration: TextDecoration.none,
+      final foodItem = widget.foodItem;
+      return Container(
+        margin: EdgeInsets.only(top: 50),
+        padding: EdgeInsets.symmetric(horizontal: 14),
+        child: Column(
+          children: [
+            Text(foodItem.recipeName,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  decoration: TextDecoration.none,
+                )),
+            SizedBox(
+              height: 10,
+            ),
+            Text(foodItem.summary,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                  decoration: TextDecoration.none,
+                  fontWeight: FontWeight.normal,
+                )),
+            SizedBox(
+              height: 12,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Kcal : ${foodItem.calorie}",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+                Text(
+                  "난이도 : ${foodItem.level}",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+                Text("시간 : ${foodItem.cookingTime}",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      decoration: TextDecoration.none,
+                      fontWeight: FontWeight.normal,
+                    ))
+              ],
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[800],
+                borderRadius: BorderRadius.circular(20),
               ),
-            );
-          });
+              width: MediaQuery.of(context).size.width - 20,
+              height: MediaQuery.of(context).size.height - 500,
+              child: PageView.builder(
+                  itemCount: recipeList.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                      child: Center(
+                        child: Text(
+                          "${index + 1}. ${recipeList[index].description}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ],
+        ),
+      );
     });
   }
 }
