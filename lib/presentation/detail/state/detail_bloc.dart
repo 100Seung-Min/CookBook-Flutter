@@ -25,12 +25,17 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       emit(state.asRecipeLoadSuccess(recipeList));
       final ingredientList =
           await _ingredientRepository.getIngredient(recipeId: event.recipeId);
-      String ingredient = "";
-      ingredientList.forEach((element) {
-        ingredient += "${element.ingredient} : ${element.capacity}, ";
-      });
-      emit(state.asIngredientLoadSuccess(
-          ingredient.substring(0, ingredient.length - 2)));
+      Map<String, String> ingredientTypeList = {};
+      for (var element in ingredientList) {
+        if (ingredientTypeList[element.type] == null) {
+          ingredientTypeList[element.type] =
+              "${element.ingredient} : ${element.capacity}";
+        } else {
+          ingredientTypeList[element.type] =
+              "${ingredientTypeList[element.type]!}, ${element.ingredient} : ${element.capacity}";
+        }
+      }
+      emit(state.asIngredientLoadSuccess(ingredientTypeList));
     } catch (e) {
       print(e);
     }

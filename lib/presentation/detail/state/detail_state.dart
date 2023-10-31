@@ -1,14 +1,13 @@
-import '../../../domain/entity/ingredient_entity.dart';
 import '../../../domain/entity/recipe_entity.dart';
 
 class DetailState {
   const DetailState._({
     this.recipeList = const [],
-    this.ingredient = "",
+    this.ingredientList = const {},
   });
 
   final List<RecipeEntity> recipeList;
-  final String ingredient;
+  final Map<String, String> ingredientList;
 
   const DetailState.initial() : this._();
 
@@ -16,17 +15,17 @@ class DetailState {
     return copyWith(recipeList: recipeList);
   }
 
-  DetailState asIngredientLoadSuccess(String ingredient) {
-    return copyWith(ingredient: ingredient);
+  DetailState asIngredientLoadSuccess(Map<String, String> ingredientList) {
+    return copyWith(ingredientList: ingredientList);
   }
 
   DetailState copyWith({
     List<RecipeEntity>? recipeList,
-    String? ingredient,
+    Map<String, String>? ingredientList,
   }) {
     return DetailState._(
       recipeList: recipeList ?? this.recipeList,
-      ingredient: ingredient ?? this.ingredient,
+      ingredientList: ingredientList ?? this.ingredientList,
     );
   }
 }

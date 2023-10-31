@@ -28,6 +28,7 @@ class _DetailScreenState extends State<DetailScreen> {
     return BlocBuilder<DetailBloc, DetailState>(builder: (context, state) {
       final recipeList = state.recipeList;
       final foodItem = widget.foodItem;
+      final ingredientList = state.ingredientList;
       return Container(
         margin: EdgeInsets.only(top: 50),
         padding: EdgeInsets.symmetric(horizontal: 14),
@@ -95,21 +96,53 @@ class _DetailScreenState extends State<DetailScreen> {
                   decoration: TextDecoration.none,
                   fontSize: 14,
                 )),
-            SizedBox(
-              height: 8,
-            ),
-            Text(state.ingredient,
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  color: Colors.white,
-                  decoration: TextDecoration.none,
-                  fontSize: 14,
-                )),
-            SizedBox(
-              height: 16,
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 14),
+                padding: EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Colors.grey[800],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: ListView.builder(
+                  itemCount: ingredientList.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          ingredientList.keys.toList()[index],
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white,
+                            decoration: TextDecoration.none,
+                            fontSize: 14,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          ingredientList.values.toList()[index],
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white,
+                            decoration: TextDecoration.none,
+                            fontSize: 14,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
             ),
             Expanded(
               child: Container(
+                margin: EdgeInsets.symmetric(vertical: 32),
                 decoration: BoxDecoration(
                   color: Colors.grey[800],
                   borderRadius: BorderRadius.circular(20),
@@ -135,7 +168,6 @@ class _DetailScreenState extends State<DetailScreen> {
                     }),
               ),
             ),
-            Expanded(child: Container())
           ],
         ),
       );
