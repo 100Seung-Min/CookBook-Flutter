@@ -1,4 +1,4 @@
-import 'package:cookbook/core/constant.dart';
+import 'package:cookbook/core/util/constant.dart';
 
 import '../../../domain/entity/food_entity.dart';
 
