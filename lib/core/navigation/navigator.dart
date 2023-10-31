@@ -3,7 +3,6 @@ library navigation;
 import 'package:cookbook/core/navigation/argument.dart';
 import 'package:cookbook/presentation/detail/detail_screen.dart';
 import 'package:cookbook/presentation/food/food_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 part 'route.dart';
@@ -15,13 +14,13 @@ class AppNavigator {
     switch (settings.name) {
       case _Paths.detail:
         final argument = settings.arguments as DetailScreenArgument;
-        return PageRouteBuilder(
-            pageBuilder: (_, __, ___) =>
-                DetailScreen(recipeId: argument.recipeId));
+        return MaterialPageRoute(
+            builder: (context) => DetailScreen(
+                  recipeId: argument.recipeId,
+                ));
       case _Paths.food:
       default:
-        return PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const FoodScreen());
+        return MaterialPageRoute(builder: (context) => const FoodScreen());
     }
   }
 
