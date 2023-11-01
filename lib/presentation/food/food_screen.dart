@@ -22,12 +22,14 @@ class _FoodScreenState extends State<FoodScreen> {
   RangeValues calorieValue = RangeValues(0, calorieMax);
   RangeValues timeValue = RangeValues(0, timeMax);
   String level = "";
+  bool isFavorite = false;
   List<FoodEntity> foodList = const [];
 
   @override
   void initState() {
     super.initState();
-    foodBloc.add(const FoodLoadStarted());
+    foodBloc.add(FoodLoadStarted());
+    foodBloc.add(FavoriteFoodLoadStarted());
     _scrollController.addListener(() {
       if (_scrollController.offset ==
               _scrollController.position.maxScrollExtent &&
@@ -58,7 +60,8 @@ class _FoodScreenState extends State<FoodScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FoodBloc, FoodState>(builder: (context, state) {
-      foodList = filterFoodList(state.foodList);
+      foodList =
+          isFavorite ? state.favoriteFoodList : filterFoodList(state.foodList);
       return Container(
         margin: EdgeInsets.only(top: 20),
         child: Column(
@@ -69,6 +72,41 @@ class _FoodScreenState extends State<FoodScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Expanded(child: Container()),
+                  GestureDetector(
+                    onTap: () {
+                      foodBloc.add(FavoriteFoodLoadStarted());
+                      setState(() {
+                        isFavorite = !isFavorite;
+                      });
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: isFavorite ? Colors.blue : Colors.grey[500],
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          Text(
+                            "즐겨찾기",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
                   GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
@@ -145,7 +183,22 @@ class _FoodScreenState extends State<FoodScreen> {
                             mainAxisSpacing: 16,
                             crossAxisSpacing: 16),
                     itemBuilder: (context, index) {
-                      return FoodItem(foodItem: foodList[index]);
+                      final foodItem = foodList[index];
+                      return StatefulBuilder(builder: (context, foodItemState) {
+                        return FoodItem(
+                          foodItem: foodItem,
+                          isFavorite: state.favoriteFoodList.contains(foodItem),
+                          onFavorite: () {
+                            if (state.favoriteFoodList.contains(foodItem)) {
+                              foodBloc
+                                  .add(FavoriteFoodRemove(foodItem.recipeId));
+                            } else {
+                              foodBloc.add(FavoriteFoodAdd(foodItem));
+                            }
+                          },
+                          state: foodItemState,
+                        );
+                      });
                     }),
               ),
             ),
