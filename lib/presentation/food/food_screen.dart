@@ -59,101 +59,99 @@ class _FoodScreenState extends State<FoodScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<FoodBloc, FoodState>(builder: (context, state) {
       foodList = filterFoodList(state.foodList);
-      return StatefulBuilder(builder: (context, containerState) {
-        return Container(
-          margin: EdgeInsets.only(top: 20),
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 14),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Expanded(child: Container()),
-                    GestureDetector(
-                      onTap: () {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return StatefulBuilder(
-                                  builder: (context, bottomSheetState) {
-                                return FilterBottomSheet(
-                                  calorieValue: calorieValue,
-                                  timeValue: timeValue,
-                                  levelValue: level,
-                                  state: bottomSheetState,
-                                  onChangeCalorie: (calorieValue) {
-                                    this.calorieValue = calorieValue;
-                                    containerState(() {
-                                      foodList = filterFoodList(state.foodList);
-                                    });
-                                  },
-                                  onChangeTime: (timeValue) {
-                                    this.timeValue = timeValue;
-                                    containerState(() {
-                                      foodList = filterFoodList(state.foodList);
-                                    });
-                                  },
-                                  onChangeLevel: (level) {
-                                    this.level = level;
-                                    containerState(() {
-                                      foodList = filterFoodList(state.foodList);
-                                    });
-                                  },
-                                );
-                              });
+      return Container(
+        margin: EdgeInsets.only(top: 20),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 14),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: Container()),
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return StatefulBuilder(
+                                builder: (context, bottomSheetState) {
+                              return FilterBottomSheet(
+                                calorieValue: calorieValue,
+                                timeValue: timeValue,
+                                levelValue: level,
+                                state: bottomSheetState,
+                                onChangeCalorie: (calorieValue) {
+                                  this.calorieValue = calorieValue;
+                                  setState(() {
+                                    foodList = filterFoodList(state.foodList);
+                                  });
+                                },
+                                onChangeTime: (timeValue) {
+                                  this.timeValue = timeValue;
+                                  setState(() {
+                                    foodList = filterFoodList(state.foodList);
+                                  });
+                                },
+                                onChangeLevel: (level) {
+                                  this.level = level;
+                                  setState(() {
+                                    foodList = filterFoodList(state.foodList);
+                                  });
+                                },
+                              );
                             });
-                      },
-                      child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.grey[500],
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.tune,
+                          });
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.grey[500],
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.tune,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          Text(
+                            "필터",
+                            style: TextStyle(
+                              fontSize: 12,
                               color: Colors.white,
-                              size: 15,
                             ),
-                            Text(
-                              "필터",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(top: 14),
-                  child: GridView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 14),
-                      controller: _scrollController,
-                      itemCount: foodList.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio: 1 / 1.4,
-                              mainAxisSpacing: 16,
-                              crossAxisSpacing: 16),
-                      itemBuilder: (context, index) {
-                        return FoodItem(foodItem: foodList[index]);
-                      }),
-                ),
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top: 14),
+                child: GridView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 14),
+                    controller: _scrollController,
+                    itemCount: foodList.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1 / 1.4,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16),
+                    itemBuilder: (context, index) {
+                      return FoodItem(foodItem: foodList[index]);
+                    }),
               ),
-            ],
-          ),
-        );
-      });
+            ),
+          ],
+        ),
+      );
     });
   }
 }
