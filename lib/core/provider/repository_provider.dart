@@ -1,3 +1,4 @@
+import 'package:cookbook/data/local/datasource/food_local_source.dart';
 import 'package:cookbook/data/remote/datasource/ingredient_remote_source.dart';
 import 'package:cookbook/data/remote/datasource/recipe_remote_source.dart';
 import 'package:cookbook/domain/repository/ingredient_repository.dart';
@@ -9,7 +10,8 @@ import '../../domain/repository/food_repository.dart';
 
 final repositoryProvider = [
   RepositoryProvider<FoodRepository>(
-    create: (context) => FoodRepository(context.read<FoodRemoteSource>()),
+    create: (context) => FoodRepository(
+        context.read<FoodRemoteSource>(), context.read<FoodLocalSource>()),
   ),
   RepositoryProvider<RecipeRepository>(
     create: (context) => RecipeRepository(context.read<RecipeRemoteSource>()),

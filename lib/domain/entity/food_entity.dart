@@ -1,4 +1,6 @@
-class FoodEntity {
+import 'package:equatable/equatable.dart';
+
+class FoodEntity extends Equatable {
   FoodEntity({
     required this.recipeId,
     required this.recipeName,
@@ -14,4 +16,7 @@ class FoodEntity {
   final String cookingTime;
   final String calorie;
   final String level;
+
+  @override
+  List<Object?> get props => [recipeId];
 }
