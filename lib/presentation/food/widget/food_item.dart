@@ -44,6 +44,8 @@ class FoodItem extends StatelessWidget {
                 ),
                 Text(
                   foodItem.summary,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.normal,

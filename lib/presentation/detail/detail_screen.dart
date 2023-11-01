@@ -96,10 +96,12 @@ class _DetailScreenState extends State<DetailScreen> {
                   decoration: TextDecoration.none,
                   fontSize: 14,
                 )),
+            SizedBox(
+              height: 14,
+            ),
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 14),
-                padding: EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                   color: Colors.grey[800],
                   borderRadius: BorderRadius.circular(20),
@@ -108,34 +110,36 @@ class _DetailScreenState extends State<DetailScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: ingredientList.length,
                   itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          ingredientList.keys.toList()[index],
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                            decoration: TextDecoration.none,
-                            fontSize: 14,
+                    return SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ingredientList.keys.toList()[index],
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white,
+                              decoration: TextDecoration.none,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Text(
-                          ingredientList.values.toList()[index],
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                            decoration: TextDecoration.none,
-                            fontSize: 14,
+                          SizedBox(
+                            height: 4,
                           ),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        )
-                      ],
+                          Text(
+                            ingredientList.values.toList()[index],
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white,
+                              decoration: TextDecoration.none,
+                              fontSize: 14,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 12,
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -153,31 +157,33 @@ class _DetailScreenState extends State<DetailScreen> {
                     itemBuilder: (context, index) {
                       return Container(
                         padding:
-                            EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "${index + 1}. ${recipeList[index].description}",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                                decoration: TextDecoration.none,
-                              ),
-                            ),
-                            if (recipeList[index].tip.isNotEmpty)
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               Text(
-                                "Tip. ${recipeList[index].tip}",
+                                "${index + 1}. ${recipeList[index].description}",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                   decoration: TextDecoration.none,
                                 ),
                               ),
-                          ],
+                              if (recipeList[index].tip.isNotEmpty)
+                                Text(
+                                  "Tip. ${recipeList[index].tip}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                       );
                     }),
