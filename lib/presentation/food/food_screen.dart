@@ -19,8 +19,8 @@ class FoodScreen extends StatefulWidget {
 class _FoodScreenState extends State<FoodScreen> {
   FoodBloc get foodBloc => context.read<FoodBloc>();
   final ScrollController _scrollController = ScrollController();
-  RangeValues calorieValue = RangeValues(0, calorieMax);
-  RangeValues timeValue = RangeValues(0, timeMax);
+  RangeValues calorieValue = const RangeValues(0, calorieMax);
+  RangeValues timeValue = const RangeValues(0, timeMax);
   String level = "";
   bool isFavorite = false;
   List<FoodEntity> foodList = const [];
@@ -63,30 +63,29 @@ class _FoodScreenState extends State<FoodScreen> {
       foodList =
           isFavorite ? state.favoriteFoodList : filterFoodList(state.foodList);
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Expanded(child: Container()),
                   GestureDetector(
                     onTap: () {
-                      foodBloc.add(FavoriteFoodLoadStarted());
                       setState(() {
                         isFavorite = !isFavorite;
                       });
                     },
                     child: Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                          const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: isFavorite ? Colors.blue : Colors.grey[500],
                       ),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             Icons.star,
@@ -104,7 +103,7 @@ class _FoodScreenState extends State<FoodScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 12,
                   ),
                   GestureDetector(
@@ -143,12 +142,12 @@ class _FoodScreenState extends State<FoodScreen> {
                     },
                     child: Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                          const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.grey[500],
                       ),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             Icons.tune,
@@ -171,9 +170,9 @@ class _FoodScreenState extends State<FoodScreen> {
             ),
             Expanded(
               child: Container(
-                margin: EdgeInsets.only(top: 14),
+                margin: const EdgeInsets.only(top: 14),
                 child: GridView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 14),
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
                     controller: _scrollController,
                     itemCount: foodList.length,
                     gridDelegate:

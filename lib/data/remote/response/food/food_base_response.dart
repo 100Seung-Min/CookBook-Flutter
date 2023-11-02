@@ -1,6 +1,5 @@
 import 'package:cookbook/data/remote/response/base_response.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'food_response.dart';
 
 part 'food_base_response.g.dart';
 

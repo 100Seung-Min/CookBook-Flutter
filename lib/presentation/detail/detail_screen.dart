@@ -30,30 +30,30 @@ class _DetailScreenState extends State<DetailScreen> {
       final foodItem = widget.foodItem;
       final ingredientList = state.ingredientList;
       return Container(
-        margin: EdgeInsets.only(top: 50),
-        padding: EdgeInsets.symmetric(horizontal: 14),
+        margin: const EdgeInsets.only(top: 50),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Text(foodItem.recipeName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                     decoration: TextDecoration.none,
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(foodItem.summary,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 17,
                   decoration: TextDecoration.none,
                   fontWeight: FontWeight.normal,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Row(
@@ -61,7 +61,7 @@ class _DetailScreenState extends State<DetailScreen> {
               children: [
                 Text(
                   "Kcal : ${foodItem.calorie}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 12,
                     decoration: TextDecoration.none,
@@ -70,7 +70,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
                 Text(
                   "난이도 : ${foodItem.level}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 12,
                     decoration: TextDecoration.none,
@@ -78,7 +78,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                 ),
                 Text("시간 : ${foodItem.cookingTime}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
                       decoration: TextDecoration.none,
@@ -86,22 +86,22 @@ class _DetailScreenState extends State<DetailScreen> {
                     ))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            Text("재료",
+            const Text("재료",
                 style: TextStyle(
                   fontWeight: FontWeight.normal,
                   color: Colors.white,
                   decoration: TextDecoration.none,
                   fontSize: 14,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 14,
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                   color: Colors.grey[800],
                   borderRadius: BorderRadius.circular(20),
@@ -116,26 +116,26 @@ class _DetailScreenState extends State<DetailScreen> {
                         children: [
                           Text(
                             ingredientList.keys.toList()[index],
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.normal,
                               color: Colors.white,
                               decoration: TextDecoration.none,
                               fontSize: 14,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Text(
                             ingredientList.values.toList()[index],
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.normal,
                               color: Colors.white,
                               decoration: TextDecoration.none,
                               fontSize: 14,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 12,
                           )
                         ],
@@ -147,7 +147,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 32),
+                margin: const EdgeInsets.symmetric(vertical: 32),
                 decoration: BoxDecoration(
                   color: Colors.grey[800],
                   borderRadius: BorderRadius.circular(20),
@@ -157,7 +157,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     itemBuilder: (context, index) {
                       return Container(
                         padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                            const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,7 +165,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             children: [
                               Text(
                                 "${index + 1}. ${recipeList[index].description}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.normal,
@@ -175,7 +175,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               if (recipeList[index].tip.isNotEmpty)
                                 Text(
                                   "Tip. ${recipeList[index].tip}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,

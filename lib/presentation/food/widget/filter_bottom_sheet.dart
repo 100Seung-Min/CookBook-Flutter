@@ -26,17 +26,17 @@ class FilterBottomSheet extends StatelessWidget {
     return Container(
       color: Colors.transparent,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 14),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14),
         decoration: BoxDecoration(
           color: Colors.grey[900],
-          borderRadius: BorderRadius.vertical(
+          borderRadius: const BorderRadius.vertical(
             top: Radius.circular(20),
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "난이도",
               style: TextStyle(
                 fontSize: 20,
@@ -53,7 +53,7 @@ class FilterBottomSheet extends StatelessWidget {
                         ? Colors.grey[800]
                         : Colors.grey[500],
                   ),
-                  child: Text("전체"),
+                  child: const Text("전체"),
                   onPressed: () {
                     state(() {
                       onChangeLevel("");
@@ -66,7 +66,7 @@ class FilterBottomSheet extends StatelessWidget {
                         ? Colors.grey[800]
                         : Colors.grey[500],
                   ),
-                  child: Text("초보환영"),
+                  child: const Text("초보환영"),
                   onPressed: () {
                     state(() {
                       onChangeLevel("초보환영");
@@ -79,7 +79,7 @@ class FilterBottomSheet extends StatelessWidget {
                         ? Colors.grey[800]
                         : Colors.grey[500],
                   ),
-                  child: Text("보통"),
+                  child: const Text("보통"),
                   onPressed: () {
                     state(() {
                       onChangeLevel("보통");
@@ -92,7 +92,7 @@ class FilterBottomSheet extends StatelessWidget {
                         ? Colors.grey[800]
                         : Colors.grey[500],
                   ),
-                  child: Text("어려움"),
+                  child: const Text("어려움"),
                   onPressed: () {
                     state(() {
                       onChangeLevel("어려움");
@@ -103,7 +103,7 @@ class FilterBottomSheet extends StatelessWidget {
             ),
             Text(
               "칼로리 ${calorieValue.start.toInt()}Kcal ~ ${calorieValue.end.toInt()}Kcal",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -122,7 +122,7 @@ class FilterBottomSheet extends StatelessWidget {
             ),
             Text(
               "시간 ${timeValue.start.toInt()}분 ~ ${timeValue.end.toInt()}분",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

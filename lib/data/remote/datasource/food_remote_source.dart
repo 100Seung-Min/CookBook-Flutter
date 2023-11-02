@@ -11,7 +11,7 @@ class FoodRemoteSource {
 
   Future<List<FoodResponse>> getFoodList({required int startIdx}) async {
     final response = await networkManager.request(RequestMethod.get,
-        '${EndPoint.food}/${startIdx}/${startIdx + pageSize}');
+        '${EndPoint.food}/$startIdx/${startIdx + pageSize}');
     return FoodBaseResponse.fromJson(response.data)
         .response
         .row

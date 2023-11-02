@@ -28,7 +28,7 @@ class FoodItem extends StatelessWidget {
             );
           },
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             decoration: BoxDecoration(
               color: Colors.grey[700],
               borderRadius: BorderRadius.circular(20),
@@ -40,21 +40,21 @@ class FoodItem extends StatelessWidget {
                   children: [
                     Text(
                       foodItem.recipeName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                         decoration: TextDecoration.none,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     Text(
                       foodItem.summary,
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.normal,
                         fontSize: 14,
@@ -68,31 +68,31 @@ class FoodItem extends StatelessWidget {
                   children: [
                     Text(
                       "Kcal : ${foodItem.calorie}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.normal,
                         fontSize: 12,
                         decoration: TextDecoration.none,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
                     Text(
                       "난이도 : ${foodItem.level}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.normal,
                         fontSize: 12,
                         decoration: TextDecoration.none,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
                     Text(
                       "시간 : ${foodItem.cookingTime}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.normal,
                         fontSize: 12,
