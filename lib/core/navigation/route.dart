@@ -13,3 +13,17 @@ class _Paths {
 
   static String of(Routes route) => _pathMap[route] ?? food;
 }
+
+class AppPageRoute extends MaterialPageRoute {
+  AppPageRoute({required this.page})
+      : super(
+          builder: (context) => Scaffold(
+            body: Container(
+              color: Colors.black,
+              child: const FoodScreen(),
+            ),
+          ),
+        );
+
+  final Widget page;
+}

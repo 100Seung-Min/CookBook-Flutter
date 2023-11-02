@@ -14,24 +14,16 @@ class AppNavigator {
     switch (settings.name) {
       case _Paths.detail:
         final argument = settings.arguments as FoodEntity;
-        return MaterialPageRoute(
-            builder: (context) => Scaffold(
-                  body: Container(
-                    color: Colors.black,
-                    child: DetailScreen(
-                      foodItem: argument,
-                    ),
-                  ),
-                ));
+        return AppPageRoute(
+          page: DetailScreen(
+            foodItem: argument,
+          ),
+        );
       case _Paths.food:
       default:
-        return MaterialPageRoute(
-            builder: (context) => Scaffold(
-                  body: Container(
-                    color: Colors.black,
-                    child: const FoodScreen(),
-                  ),
-                ));
+        return AppPageRoute(
+          page: const FoodScreen(),
+        );
     }
   }
 
