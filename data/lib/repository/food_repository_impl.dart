@@ -1,9 +1,10 @@
-import 'package:data/local/entity/food_entity.dart';
-import 'package:data/remote/response/food/food_response.dart';
+import 'package:data/mapper/food/entity_to_hive.dart';
+import 'package:data/mapper/food/hive_to_entity.dart';
+import 'package:data/mapper/food/response_to_entity.dart';
 import 'package:domain/entity/food_entity.dart';
 import 'package:domain/repository/food_repository.dart';
-import '../local/datasource/food_local_source.dart';
-import '../remote/datasource/food_remote_source.dart';
+import 'package:local/datasource/food_local_source.dart';
+import 'package:remote/datasource/food_remote_source.dart';
 
 class FoodRepositoryImpl extends FoodRepository {
   FoodRepositoryImpl(this.foodRemoteSource, this.foodLocalSource);

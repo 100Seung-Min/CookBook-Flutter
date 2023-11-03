@@ -1,8 +1,7 @@
-import 'package:data/remote/response/ingredient/ingredient_response.dart';
+import 'package:data/mapper/ingredient/response_to_entity.dart';
 import 'package:domain/entity/ingredient_entity.dart';
 import 'package:domain/repository/ingredient_repository.dart';
-
-import '../remote/datasource/ingredient_remote_source.dart';
+import 'package:remote/datasource/ingredient_remote_source.dart';
 
 class IngredientRepositoryImpl extends IngredientRepository {
   IngredientRepositoryImpl(this.ingredientRemoteSource);
