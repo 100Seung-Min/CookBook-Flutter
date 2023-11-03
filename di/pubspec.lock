@@ -68,14 +68,7 @@ packages:
   data:
     dependency: "direct main"
     description:
-      path: data
-      relative: true
-    source: path
-    version: "1.0.0+1"
-  di:
-    dependency: "direct main"
-    description:
-      path: di
+      path: "../data"
       relative: true
     source: path
     version: "1.0.0+1"
@@ -88,9 +81,9 @@ packages:
     source: hosted
     version: "5.3.3"
   domain:
-    dependency: transitive
+    dependency: "direct main"
     description:
-      path: domain
+      path: "../domain"
       relative: true
     source: path
     version: "1.0.0+1"
@@ -124,7 +117,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_bloc:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_bloc
       sha256: e74efb89ee6945bcbce74a5b3a5a3376b088e5f21f55c263fc38cbdc6237faae
@@ -291,7 +284,7 @@ packages:
   presentation:
     dependency: "direct main"
     description:
-      path: presentation
+      path: "../presentation"
       relative: true
     source: path
     version: "1.0.0+1"

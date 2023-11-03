@@ -1,12 +1,12 @@
-import 'package:cookbook/core/navigation/navigator.dart';
-import 'package:cookbook/core/provider/bloc_provider.dart';
-import 'package:cookbook/core/provider/local_source_provider.dart';
-import 'package:cookbook/core/provider/network_provider.dart';
-import 'package:cookbook/core/provider/remote_source_provider.dart';
-import 'package:cookbook/core/provider/repository_provider.dart';
-import 'package:cookbook/data/local/datasource/food_local_source.dart';
+import 'package:data/local/datasource/food_local_source.dart';
+import 'package:di/bloc_provider.dart';
+import 'package:di/local_source_provider.dart';
+import 'package:di/network_provider.dart';
+import 'package:di/remote_source_provider.dart';
+import 'package:di/repository_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:presentation/navigation/navigator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
