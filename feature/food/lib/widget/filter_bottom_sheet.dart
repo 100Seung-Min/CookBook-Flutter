@@ -44,6 +44,9 @@ class FilterBottomSheet extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const SizedBox(
+              height: 4,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -101,6 +104,9 @@ class FilterBottomSheet extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 24,
+            ),
             Text(
               "칼로리 ${calorieValue.start.toInt()}Kcal ~ ${calorieValue.end.toInt()}Kcal",
               style: const TextStyle(
@@ -108,6 +114,9 @@ class FilterBottomSheet extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            const SizedBox(
+              height: 4,
             ),
             RangeSlider(
               values: calorieValue,
@@ -120,6 +129,9 @@ class FilterBottomSheet extends StatelessWidget {
                 });
               },
             ),
+            const SizedBox(
+              height: 24,
+            ),
             Text(
               "시간 ${timeValue.start.toInt()}분 ~ ${timeValue.end.toInt()}분",
               style: const TextStyle(
@@ -127,6 +139,9 @@ class FilterBottomSheet extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            const SizedBox(
+              height: 4,
             ),
             RangeSlider(
               values: timeValue,
