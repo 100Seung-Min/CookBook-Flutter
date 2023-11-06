@@ -1,0 +1,30 @@
+name: detail
+description: A new Flutter module project.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_bloc: ^8.1.3
+  stream_transform: ^2.1.0
+
+  domain:
+    path: ../../core/domain
+  navigation:
+    path: ../../core/navigation
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  module:
+    androidX: true
+    androidPackage: com.cookbook.feature.detail
+    iosBundleIdentifier: com.cookbook.feature.detail

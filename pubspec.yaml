@@ -14,11 +14,13 @@ dependencies:
   flutter_bloc: ^8.1.3
 
   data:
-    path: data
-  presentation:
-    path: presentation
-  local:
-    path: data/local
+    path: core/data
+  navigation:
+    path: core/navigation
+  detail:
+    path: feature/detail
+  food:
+    path: feature/food
 
 dev_dependencies:
   flutter_test:
