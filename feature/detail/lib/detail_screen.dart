@@ -4,6 +4,7 @@ import 'package:detail/state/detail_state.dart';
 import 'package:domain/entity/food_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({required this.foodItem, super.key});
@@ -20,7 +21,8 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();
-    detailBloc.add(RecipeLoadStarted(recipeId: (widget.foodItem as FoodEntity).recipeId));
+    detailBloc.add(
+        RecipeLoadStarted(recipeId: (widget.foodItem as FoodEntity).recipeId));
   }
 
   @override
@@ -29,6 +31,16 @@ class _DetailScreenState extends State<DetailScreen> {
       final recipeList = state.recipeList;
       final foodItem = widget.foodItem as FoodEntity;
       final ingredientList = state.ingredientList;
+      if (state.isLoading) {
+        return Center(
+          child: Lottie.asset(
+            'image/loadingLottie.json',
+            width: 300,
+            height: 300,
+            fit: BoxFit.fill,
+          ),
+        );
+      }
       return Container(
         margin: const EdgeInsets.only(top: 50),
         padding: const EdgeInsets.symmetric(horizontal: 14),

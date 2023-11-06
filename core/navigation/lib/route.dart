@@ -19,7 +19,7 @@ class AppPageRoute extends MaterialPageRoute {
       : super(
           builder: (context) => Scaffold(
             body: Container(
-              color: Colors.black,
+              color: Colors.black54,
               child: page,
             ),
           ),
