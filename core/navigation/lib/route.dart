@@ -16,14 +16,16 @@ class Paths {
 
 class AppPageRoute extends MaterialPageRoute {
   AppPageRoute({required this.page})
-      : super(
-          builder: (context) => Scaffold(
+      : super(builder: (context) {
+          final double topPadding = MediaQuery.of(context).padding.top;
+          return Scaffold(
             body: Container(
+              padding: EdgeInsets.only(top: topPadding),
               color: Colors.black54,
               child: page,
             ),
-          ),
-        );
+          );
+        });
 
   final Widget page;
 }
